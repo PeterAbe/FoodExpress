@@ -1,0 +1,463 @@
+{
+  "restaurants": {
+    "restaurant1": {
+      "name": "Pizza Pizza",
+      "rating": 4.5,
+      "address": "123 Main Street, Toronto",
+      "deliveryFee": 3.99,
+      "bannerImage": "https://placehold.co/600x200?text=Pizza+Pizza+Banner",
+      "logo": "https://placehold.co/100x100?text=Pizza+Pizza+Logo",
+      "menu": {
+        "item1": {
+          "name": "Pepperoni Pizza",
+          "description": "Classic pepperoni pizza with mozzarella cheese.",
+          "price": 12.99,
+          "imageUrl": "https://placehold.co/200x200?text=Pepperoni+Pizza",
+          "category": "Pizza"
+        },
+        "item2": {
+          "name": "Cheese Pizza",
+          "description": "A simple pizza topped with mozzarella cheese and tomato sauce.",
+          "price": 10.99,
+          "imageUrl": "https://placehold.co/200x200?text=Cheese+Pizza",
+          "category": "Pizza"
+        },
+        "item3": {
+          "name": "Chicken Wings",
+          "description": "Crispy chicken wings served with your choice of sauce.",
+          "price": 9.99,
+          "imageUrl": "https://placehold.co/200x200?text=Chicken+Wings",
+          "category": "Sides"
+        },
+        "item4": {
+          "name": "Garlic Bread",
+          "description": "Toasted garlic bread with butter and herbs.",
+          "price": 4.99,
+          "imageUrl": "https://placehold.co/200x200?text=Garlic+Bread",
+          "category": "Sides"
+        },
+        "item5": {
+          "name": "Veggie Pizza",
+          "description": "Loaded with peppers, mushrooms, and onions.",
+          "price": 11.49,
+          "imageUrl": "https://placehold.co/200x200?text=Veggie+Pizza",
+          "category": "Pizza"
+        }
+      }
+    },
+
+    "restaurant2": {
+      "name": "Domino's Pizza",
+      "rating": 4.4,
+      "address": "456 King Street, Toronto",
+      "deliveryFee": 2.99,
+      "bannerImage": "https://placehold.co/600x200?text=Dominos+Banner",
+      "logo": "https://placehold.co/100x100?text=Dominos+Logo",
+      "menu": {
+        "item1": {
+          "name": "Deluxe Pizza",
+          "description": "Loaded with pepperoni, mushrooms, green peppers, and onions.",
+          "price": 13.49,
+          "imageUrl": "https://placehold.co/200x200?text=Deluxe+Pizza",
+          "category": "Pizza"
+        },
+        "item2": {
+          "name": "Margherita Pizza",
+          "description": "Fresh mozzarella, tomato sauce, and basil.",
+          "price": 11.99,
+          "imageUrl": "https://placehold.co/200x200?text=Margherita+Pizza",
+          "category": "Pizza"
+        },
+        "item3": {
+          "name": "Chicken Alfredo Pasta",
+          "description": "Creamy Alfredo pasta with grilled chicken.",
+          "price": 10.99,
+          "imageUrl": "https://placehold.co/200x200?text=Chicken+Alfredo+Pasta",
+          "category": "Pasta"
+        },
+        "item4": {
+          "name": "Cheese Bread",
+          "description": "Soft bread baked with garlic and cheese.",
+          "price": 6.49,
+          "imageUrl": "https://placehold.co/200x200?text=Cheese+Bread",
+          "category": "Sides"
+        },
+        "item5": {
+          "name": "Lava Cake",
+          "description": "Warm chocolate cake with molten center.",
+          "price": 4.99,
+          "imageUrl": "https://placehold.co/200x200?text=Lava+Cake",
+          "category": "Dessert"
+        }
+      }
+    },
+
+    "restaurant3": {
+      "name": "McDonald's",
+      "rating": 4.3,
+      "address": "789 Queen Street, Toronto",
+      "deliveryFee": 2.49,
+      "bannerImage": "https://placehold.co/600x200?text=McDonalds+Banner",
+      "logo": "https://placehold.co/100x100?text=McDonalds+Logo",
+      "menu": {
+        "item1": {
+          "name": "Big Mac",
+          "description": "Two beef patties with special sauce, lettuce, cheese, pickles, and onions.",
+          "price": 6.99,
+          "imageUrl": "https://placehold.co/200x200?text=Big+Mac",
+          "category": "Burgers"
+        },
+        "item2": {
+          "name": "McChicken",
+          "description": "Crispy chicken sandwich with mayo and lettuce.",
+          "price": 5.99,
+          "imageUrl": "https://placehold.co/200x200?text=McChicken",
+          "category": "Sandwiches"
+        },
+        "item3": {
+          "name": "Quarter Pounder",
+          "description": "Beef patty with cheese, ketchup, and onions.",
+          "price": 7.49,
+          "imageUrl": "https://placehold.co/200x200?text=Quarter+Pounder",
+          "category": "Burgers"
+        },
+        "item4": {
+          "name": "Filet-O-Fish",
+          "description": "Fried fish sandwich with tartar sauce.",
+          "price": 5.49,
+          "imageUrl": "https://placehold.co/200x200?text=Filet-O-Fish",
+          "category": "Sandwiches"
+        },
+        "item5": {
+          "name": "McFlurry",
+          "description": "Soft serve ice cream blended with candy pieces.",
+          "price": 3.99,
+          "imageUrl": "https://placehold.co/200x200?text=McFlurry",
+          "category": "Dessert"
+        }
+      }
+    },
+
+    "restaurant4": {
+      "name": "Wendy's",
+      "rating": 4.4,
+      "address": "88 Dundas Street, Toronto",
+      "deliveryFee": 2.99,
+      "bannerImage": "https://placehold.co/600x200?text=Wendys+Banner",
+      "logo": "https://placehold.co/100x100?text=Wendys+Logo",
+      "menu": {
+        "item1": {
+          "name": "Dave’s Single",
+          "description": "Fresh beef burger with lettuce, tomato, and cheese.",
+          "price": 7.49,
+          "imageUrl": "https://placehold.co/200x200?text=Daves+Single",
+          "category": "Burgers"
+        },
+        "item2": {
+          "name": "Baconator",
+          "description": "Double beef patties layered with bacon and cheese.",
+          "price": 8.99,
+          "imageUrl": "https://placehold.co/200x200?text=Baconator",
+          "category": "Burgers"
+        },
+        "item3": {
+          "name": "Spicy Chicken Sandwich",
+          "description": "Crispy spicy chicken with mayo and lettuce.",
+          "price": 7.99,
+          "imageUrl": "https://placehold.co/200x200?text=Spicy+Chicken+Sandwich",
+          "category": "Sandwiches"
+        },
+        "item4": {
+          "name": "Frosty",
+          "description": "Creamy chocolate frozen dessert.",
+          "price": 2.99,
+          "imageUrl": "https://placehold.co/200x200?text=Frosty",
+          "category": "Dessert"
+        },
+        "item5": {
+          "name": "Chicken Nuggets",
+          "description": "Crispy breaded chicken pieces.",
+          "price": 4.99,
+          "imageUrl": "https://placehold.co/200x200?text=Chicken+Nuggets",
+          "category": "Sides"
+        }
+      }
+    },
+
+    "restaurant5": {
+      "name": "Burger King",
+      "rating": 4.2,
+      "address": "555 College Street, Toronto",
+      "deliveryFee": 3.49,
+      "bannerImage": "https://placehold.co/600x200?text=Burger+King+Banner",
+      "logo": "https://placehold.co/100x100?text=Burger+King+Logo",
+      "menu": {
+        "item1": {
+          "name": "Whopper",
+          "description": "Flame-grilled beef burger with lettuce, tomato, and mayo.",
+          "price": 7.99,
+          "imageUrl": "https://placehold.co/200x200?text=Whopper",
+          "category": "Burgers"
+        },
+        "item2": {
+          "name": "Chicken Fries",
+          "description": "Strips of breaded chicken shaped like fries.",
+          "price": 4.99,
+          "imageUrl": "https://placehold.co/200x200?text=Chicken+Fries",
+          "category": "Sides"
+        },
+        "item3": {
+          "name": "Double Cheeseburger",
+          "description": "Two beef patties with cheese and pickles.",
+          "price": 6.99,
+          "imageUrl": "https://placehold.co/200x200?text=Double+Cheeseburger",
+          "category": "Burgers"
+        },
+        "item4": {
+          "name": "Original Chicken Sandwich",
+          "description": "Long crispy chicken sandwich with lettuce and mayo.",
+          "price": 6.49,
+          "imageUrl": "https://placehold.co/200x200?text=Original+Chicken+Sandwich",
+          "category": "Sandwiches"
+        },
+        "item5": {
+          "name": "Onion Rings",
+          "description": "Crispy battered onion rings.",
+          "price": 3.99,
+          "imageUrl": "https://placehold.co/200x200?text=Onion+Rings",
+          "category": "Sides"
+        }
+      }
+    },
+
+    "restaurant6": {
+      "name": "Osmow’s Shawarma",
+      "rating": 4.6,
+      "address": "22 Bloor Street, Toronto",
+      "deliveryFee": 3.99,
+      "bannerImage": "https://placehold.co/600x200?text=Osmows+Banner",
+      "logo": "https://placehold.co/100x100?text=Osmows+Logo",
+      "menu": {
+        "item1": {
+          "name": "Chicken Shawarma",
+          "description": "Grilled chicken with garlic sauce, served in a wrap.",
+          "price": 9.99,
+          "imageUrl": "https://placehold.co/200x200?text=Chicken+Shawarma",
+          "category": "Wraps"
+        },
+        "item2": {
+          "name": "Beef Shawarma",
+          "description": "Thinly sliced beef with tahini sauce.",
+          "price": 10.49,
+          "imageUrl": "https://placehold.co/200x200?text=Beef+Shawarma",
+          "category": "Wraps"
+        },
+        "item3": {
+          "name": "Falafel Wrap",
+          "description": "Crispy falafel balls wrapped with veggies and tahini.",
+          "price": 8.99,
+          "imageUrl": "https://placehold.co/200x200?text=Falafel+Wrap",
+          "category": "Wraps"
+        },
+        "item4": {
+          "name": "Shawarma Poutine",
+          "description": "Fries topped with cheese curds, gravy, and shawarma.",
+          "price": 11.49,
+          "imageUrl": "https://placehold.co/200x200?text=Shawarma+Poutine",
+          "category": "Poutine"
+        },
+        "item5": {
+          "name": "Lamb on the Rocks",
+          "description": "Rice topped with lamb shawarma and sauces.",
+          "price": 12.49,
+          "imageUrl": "https://placehold.co/200x200?text=Lamb+on+the+Rocks",
+          "category": "Bowls"
+        }
+      }
+    },
+
+    "restaurant7": {
+      "name": "Taco Bell",
+      "rating": 4.1,
+      "address": "14 Queen Street, Toronto",
+      "deliveryFee": 2.99,
+      "bannerImage": "https://placehold.co/600x200?text=Taco+Bell+Banner",
+      "logo": "https://placehold.co/100x100?text=Taco+Bell+Logo",
+      "menu": {
+        "item1": {
+          "name": "Crunchy Taco",
+          "description": "Crispy taco shell filled with seasoned beef, lettuce, and cheese.",
+          "price": 2.99,
+          "imageUrl": "https://placehold.co/200x200?text=Crunchy+Taco",
+          "category": "Tacos"
+        },
+        "item2": {
+          "name": "Beef Burrito",
+          "description": "Flour tortilla stuffed with seasoned beef and beans.",
+          "price": 4.99,
+          "imageUrl": "https://placehold.co/200x200?text=Beef+Burrito",
+          "category": "Burritos"
+        },
+        "item3": {
+          "name": "Quesadilla",
+          "description": "Grilled tortilla with melted cheese and chicken.",
+          "price": 5.49,
+          "imageUrl": "https://placehold.co/200x200?text=Quesadilla",
+          "category": "Grilled Items"
+        },
+        "item4": {
+          "name": "Chalupa Supreme",
+          "description": "Soft taco shell with beef, sour cream, and lettuce.",
+          "price": 5.99,
+          "imageUrl": "https://placehold.co/200x200?text=Chalupa+Supreme",
+          "category": "Tacos"
+        },
+        "item5": {
+          "name": "Nachos BellGrande",
+          "description": "Tortilla chips topped with beef, cheese, and sour cream.",
+          "price": 6.49,
+          "imageUrl": "https://placehold.co/200x200?text=Nachos+BellGrande",
+          "category": "Sides"
+        }
+      }
+    },
+
+    "restaurant8": {
+      "name": "Popeyes Louisiana Kitchen",
+      "rating": 4.5,
+      "address": "222 Bay Street, Toronto",
+      "deliveryFee": 3.49,
+      "bannerImage": "https://placehold.co/600x200?text=Popeyes+Banner",
+      "logo": "https://placehold.co/100x100?text=Popeyes+Logo",
+      "menu": {
+        "item1": {
+          "name": "Spicy Chicken Sandwich",
+          "description": "Crispy spicy chicken breast on a toasted brioche bun.",
+          "price": 6.99,
+          "imageUrl": "https://placehold.co/200x200?text=Spicy+Chicken+Sandwich",
+          "category": "Sandwiches"
+        },
+        "item2": {
+          "name": "Chicken Tenders",
+          "description": "Crispy battered chicken tenders with dipping sauce.",
+          "price": 7.49,
+          "imageUrl": "https://placehold.co/200x200?text=Chicken+Tenders",
+          "category": "Chicken"
+        },
+        "item3": {
+          "name": "Cajun Fries",
+          "description": "Seasoned fries with Cajun spices.",
+          "price": 3.49,
+          "imageUrl": "https://placehold.co/200x200?text=Cajun+Fries",
+          "category": "Sides"
+        },
+        "item4": {
+          "name": "Biscuits",
+          "description": "Warm buttery biscuits baked fresh.",
+          "price": 2.99,
+          "imageUrl": "https://placehold.co/200x200?text=Biscuits",
+          "category": "Sides"
+        },
+        "item5": {
+          "name": "Popcorn Shrimp",
+          "description": "Crispy bite-sized shrimp with dipping sauce.",
+          "price": 6.49,
+          "imageUrl": "https://placehold.co/200x200?text=Popcorn+Shrimp",
+          "category": "Seafood"
+        }
+      }
+    },
+
+    "restaurant9": {
+      "name": "Tim Hortons",
+      "rating": 4.3,
+      "address": "678 Yonge Street, Toronto",
+      "deliveryFee": 2.49,
+      "bannerImage": "https://placehold.co/600x200?text=Tim+Hortons+Banner",
+      "logo": "https://placehold.co/100x100?text=Tim+Hortons+Logo",
+      "menu": {
+        "item1": {
+          "name": "Double Double Coffee",
+          "description": "Freshly brewed coffee with two cream and two sugar.",
+          "price": 1.99,
+          "imageUrl": "https://placehold.co/200x200?text=Coffee",
+          "category": "Beverages"
+        },
+        "item2": {
+          "name": "Timbits",
+          "description": "Bite-sized donut holes in assorted flavors.",
+          "price": 2.99,
+          "imageUrl": "https://placehold.co/200x200?text=Timbits",
+          "category": "Bakery"
+        },
+        "item3": {
+          "name": "Iced Capp",
+          "description": "Blended coffee beverage topped with cream.",
+          "price": 3.99,
+          "imageUrl": "https://placehold.co/200x200?text=Iced+Capp",
+          "category": "Beverages"
+        },
+        "item4": {
+          "name": "Farmer’s Breakfast Wrap",
+          "description": "Egg, sausage, and hash browns wrapped in a tortilla.",
+          "price": 4.99,
+          "imageUrl": "https://placehold.co/200x200?text=Breakfast+Wrap",
+          "category": "Breakfast"
+        },
+        "item5": {
+          "name": "Boston Cream Donut",
+          "description": "Yeast donut filled with custard and topped with chocolate glaze.",
+          "price": 1.79,
+          "imageUrl": "https://placehold.co/200x200?text=Boston+Cream",
+          "category": "Bakery"
+        }
+      }
+    },
+
+    "restaurant10": {
+      "name": "Starbucks",
+      "rating": 4.6,
+      "address": "100 Front Street, Toronto",
+      "deliveryFee": 3.99,
+      "bannerImage": "https://placehold.co/600x200?text=Starbucks+Banner",
+      "logo": "https://placehold.co/100x100?text=Starbucks+Logo",
+      "menu": {
+        "item1": {
+          "name": "Caffè Latte",
+          "description": "Rich espresso blended with steamed milk.",
+          "price": 4.99,
+          "imageUrl": "https://placehold.co/200x200?text=Caffe+Latte",
+          "category": "Beverages"
+        },
+        "item2": {
+          "name": "Caramel Macchiato",
+          "description": "Espresso with vanilla syrup and caramel drizzle.",
+          "price": 5.49,
+          "imageUrl": "https://placehold.co/200x200?text=Caramel+Macchiato",
+          "category": "Beverages"
+        },
+        "item3": {
+          "name": "Cold Brew",
+          "description": "Smooth cold-brewed coffee served over ice.",
+          "price": 4.79,
+          "imageUrl": "https://placehold.co/200x200?text=Cold+Brew",
+          "category": "Beverages"
+        },
+        "item4": {
+          "name": "Mocha Frappuccino",
+          "description": "Blended mocha coffee drink with whipped cream.",
+          "price": 5.99,
+          "imageUrl": "https://placehold.co/200x200?text=Mocha+Frappuccino",
+          "category": "Beverages"
+        },
+        "item5": {
+          "name": "Blueberry Muffin",
+          "description": "Soft muffin baked with juicy blueberries.",
+          "price": 2.99,
+          "imageUrl": "https://placehold.co/200x200?text=Blueberry+Muffin",
+          "category": "Bakery"
+        }
+      }
+    }
+  }
+}

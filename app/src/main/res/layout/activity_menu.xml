@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <!-- Search bar -->
+        <EditText
+            android:id="@+id/editTextSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Search for food or restaurants"
+            android:imeOptions="actionSearch"
+            android:inputType="text" />
+
+        <!-- Search button -->
+        <Button
+            android:id="@+id/buttonSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            android:layout_gravity="end"
+            android:layout_marginTop="8dp" />
+
+        <!-- Suggestions -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Suggestions / Popular Searches"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:paddingTop="16dp" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="80dp"
+                    android:gravity="center"
+                    android:layout_margin="8dp"
+                    android:text="Burger"
+                    android:background="@android:color/darker_gray" />
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="80dp"
+                    android:gravity="center"
+                    android:layout_margin="8dp"
+                    android:text="Pizza"
+                    android:background="@android:color/darker_gray" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+
+    <!-- Bottom Navigation Bar -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:menu="@menu/bottom_nav_menu"
+        app:labelVisibilityMode="labeled" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
