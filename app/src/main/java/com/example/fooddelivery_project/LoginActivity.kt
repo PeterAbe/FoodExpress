@@ -18,7 +18,7 @@ class LoginActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        // ✅ Auto-login check: if user already signed in, skip to Home
+        // Auto-login check: if user already signed in, skip to Home
         if (auth.currentUser != null) {
             startActivity(Intent(this, HomeActivity::class.java))
             finish()

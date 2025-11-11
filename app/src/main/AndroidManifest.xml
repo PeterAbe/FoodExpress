@@ -11,42 +11,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodDelivery_Project">
-        <activity
-            android:name=".Restaurant"
-            android:exported="false" />
-        <activity
-            android:name=".RestaurantAdapter"
-            android:exported="false" />
-        <activity
-            android:name=".MenuAdapter"
-            android:exported="false" />
-        <activity
-            android:name=".AccountActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ItemActivity"
-            android:exported="false" />
-        <activity
-            android:name=".RestaurantMenuActivity"
-            android:exported="false" />
-        <activity
-            android:name=".VideoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MapActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CartActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MenuActivity"
-            android:exported="false" />
-        <activity
-            android:name=".HomeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SignupActivity"
-            android:exported="false" />
+
+        <!-- REMOVE adapters & data classes (not activities) -->
+        <!-- <activity android:name=".Restaurant" android:exported="false" /> -->
+        <!-- <activity android:name=".RestaurantAdapter" android:exported="false" /> -->
+        <!-- <activity android:name=".MenuAdapter" android:exported="false" /> -->
+
+        <!-- ✅ Keep only actual activity classes -->
+        <activity android:name=".AccountActivity" android:exported="false" />
+        <activity android:name=".ItemActivity" android:exported="false" />
+        <activity android:name=".RestaurantMenuActivity" android:exported="true" />
+        <activity android:name=".VideoActivity" android:exported="false" />
+        <activity android:name=".MapActivity" android:exported="false" />
+        <activity android:name=".CartActivity" android:exported="false" />
+        <activity android:name=".MenuActivity" android:exported="false" />
+        <activity android:name=".HomeActivity" android:exported="false" />
+        <activity android:name=".SignupActivity" android:exported="false" />
+
+        <!-- Launcher activity -->
         <activity
             android:name=".LoginActivity"
             android:exported="true"
@@ -54,10 +36,10 @@
             android:theme="@style/Theme.FoodDelivery_Project">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

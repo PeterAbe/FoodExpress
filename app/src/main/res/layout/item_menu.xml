@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@android:color/white">
 
+    <!-- Food Image -->
     <ImageView
         android:id="@+id/itemImage"
         android:layout_width="80dp"
@@ -14,34 +15,86 @@
         android:layout_marginEnd="12dp"
         android:contentDescription="Food image" />
 
+    <!-- Details + Buttons -->
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
         <TextView
             android:id="@+id/itemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Food Name"
             android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/itemDescription"
-            android:text="Short description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp" />
+            android:text="Short description"
+            android:textSize="14sp"
+            android:layout_marginTop="2dp" />
 
         <TextView
             android:id="@+id/itemPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="$9.99"
             android:textStyle="bold"
             android:textSize="16sp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="4dp" />
+
+        <!-- 🛒 Add to Cart Button -->
+        <Button
+            android:id="@+id/addToCartButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Add to Cart"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/purple_500"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="end" />
+
+        <!-- Quantity Controls -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical">
+
+            <Button
+                android:id="@+id/decreaseButton"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:text="-"
+                android:backgroundTint="@color/teal_700"
+                android:textColor="@android:color/white"
+                android:layout_marginHorizontal="4dp"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/quantityText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:padding="8dp"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/increaseButton"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:text="+"
+                android:backgroundTint="@color/teal_700"
+                android:textColor="@android:color/white"
+                android:layout_marginHorizontal="4dp"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
     </LinearLayout>
+
 </LinearLayout>

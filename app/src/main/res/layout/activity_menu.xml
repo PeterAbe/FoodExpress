@@ -11,23 +11,25 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:layout_marginBottom="60dp"> <!-- leave space for bottom nav -->
 
-        <!-- Search bar -->
+        <!--  Search bar -->
         <EditText
             android:id="@+id/editTextSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Search for food or restaurants"
+            android:hint="@string/search_hint"
             android:imeOptions="actionSearch"
-            android:inputType="text" />
+            android:inputType="text"
+            android:autofillHints="username" />
 
         <!-- Search button -->
         <Button
             android:id="@+id/buttonSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Search"
+            android:text="@string/search_button"
             android:layout_gravity="end"
             android:layout_marginTop="8dp" />
 
@@ -35,7 +37,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Suggestions / Popular Searches"
+            android:text="@string/suggestions_title"
             android:textSize="16sp"
             android:textStyle="bold"
             android:paddingTop="16dp" />
@@ -55,7 +57,7 @@
                     android:layout_height="80dp"
                     android:gravity="center"
                     android:layout_margin="8dp"
-                    android:text="Burger"
+                    android:text="@string/burger_label"
                     android:background="@android:color/darker_gray" />
 
                 <TextView
@@ -63,11 +65,20 @@
                     android:layout_height="80dp"
                     android:gravity="center"
                     android:layout_margin="8dp"
-                    android:text="Pizza"
+                    android:text="@string/pizza_label"
                     android:background="@android:color/darker_gray" />
-
             </LinearLayout>
         </HorizontalScrollView>
+
+        <!-- RecyclerView for restaurant list -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewRestaurants"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingTop="8dp"
+            android:scrollbars="vertical" />
+
     </LinearLayout>
 
     <!-- Bottom Navigation Bar -->
@@ -78,4 +89,5 @@
         android:layout_gravity="bottom"
         app:menu="@menu/bottom_nav_menu"
         app:labelVisibilityMode="labeled" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">FoodDelivery_Project</string>
+    <string name="search_hint">Search for food or restaurants</string>
+    <string name="search_button">Search</string>
+    <string name="suggestions_title">Suggestions / Popular Searches</string>
+    <string name="burger_label">Burger</string>
+    <string name="pizza_label">Pizza</string>
+
+    <!-- 🔽 Add these new ones -->
+    <string name="food_image">Food image</string>
+    <string name="restaurant_name">Restaurant Name</string>
+    <string name="food_name">Food Name</string>
+    <string name="short_description">Short description</string>
+    <string name="sample_price">$9.99</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="remove">Remove</string>
+
+    <!-- Optional for quantity buttons -->
+    <string name="minus">-</string>
+    <string name="plus">+</string>
+    <string name="quantity_default">1</string>
 </resources>

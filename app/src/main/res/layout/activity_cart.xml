@@ -7,34 +7,55 @@
     android:layout_height="match_parent"
     tools:context=".CartActivity">
 
+    <!-- Main Content -->
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:layout_marginBottom="70dp"> <!-- space for bottom nav -->
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="Your Cart"
             android:textSize="22sp"
             android:textStyle="bold"
-            android:paddingBottom="16dp" />
-
-        <!-- Placeholder for cart items -->
-        <TextView
+            android:paddingBottom="8dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="No items in cart yet."
-            android:textSize="16sp" />
+            android:layout_height="wrap_content" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cartRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/totalTextView"
+            android:text="Total: $0.00"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/checkoutButton"
+            android:text="Checkout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"/>
     </LinearLayout>
 
+    <!-- Bottom Navigation Bar -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:background="?android:attr/windowBackground"
         app:menu="@menu/bottom_nav_menu"
-        app:labelVisibilityMode="labeled" />
+        app:labelVisibilityMode="labeled"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

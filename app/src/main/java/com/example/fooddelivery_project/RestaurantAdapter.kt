@@ -1,5 +1,6 @@
 package com.example.fooddelivery_project
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,6 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.fooddelivery_project.R
 
 class RestaurantAdapter(
     private val restaurantList: List<Restaurant>,
@@ -16,18 +16,17 @@ class RestaurantAdapter(
 ) : RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder>() {
 
     inner class RestaurantViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val restaurantName: TextView = itemView.findViewById(R.id.restaurantName)
-        val restaurantAddress: TextView = itemView.findViewById(R.id.restaurantAddress)
-        val restaurantRating: RatingBar = itemView.findViewById(R.id.restaurantRating)
-        val restaurantLogo: ImageView = itemView.findViewById(R.id.restaurantLogo)
-        val restaurantBanner: ImageView = itemView.findViewById(R.id.restaurantBanner)
+        private val restaurantName: TextView = itemView.findViewById(R.id.restaurantName)
+        private val restaurantAddress: TextView = itemView.findViewById(R.id.restaurantAddress)
+        private val restaurantRating: RatingBar = itemView.findViewById(R.id.restaurantRating)
+        private val restaurantLogo: ImageView = itemView.findViewById(R.id.restaurantLogo)
+        private val restaurantBanner: ImageView = itemView.findViewById(R.id.restaurantBanner)
 
         fun bind(restaurant: Restaurant) {
-            restaurantName.text = restaurant.name
-            restaurantAddress.text = restaurant.address
-            restaurantRating.rating = restaurant.rating.toFloat()
+            restaurantName.text = restaurant.name ?: "Unnamed Restaurant"
+            restaurantAddress.text = restaurant.address ?: "Address not available"
+            restaurantRating.rating = (restaurant.rating ?: 0.0).toFloat()
 
-            // Glide for logo
             Glide.with(itemView.context)
                 .load(restaurant.logo)
                 .placeholder(R.drawable.ic_placeholder_logo)
@@ -35,7 +34,6 @@ class RestaurantAdapter(
                 .centerCrop()
                 .into(restaurantLogo)
 
-            // Glide for banner
             Glide.with(itemView.context)
                 .load(restaurant.bannerImage)
                 .placeholder(R.drawable.ic_placeholder_banner)
@@ -44,7 +42,12 @@ class RestaurantAdapter(
                 .into(restaurantBanner)
 
             itemView.setOnClickListener {
-                onItemClick(restaurant)
+                try {
+                    Log.d("RestaurantAdapter", "Clicked: ${restaurant.name}")
+                    onItemClick(restaurant)
+                } catch (e: Exception) {
+                    Log.e("RestaurantAdapter", "Error handling click: ${e.message}", e)
+                }
             }
         }
     }

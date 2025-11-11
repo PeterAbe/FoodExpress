@@ -46,6 +46,8 @@ class RestaurantMenuActivity : AppCompatActivity() {
                             menuItems.clear()
                             for (menuDoc in menuDocs) {
                                 val item = menuDoc.toObject(MenuItem::class.java)
+                                // Add restaurant name to each menu item
+                                item.restaurant = restaurantName
                                 menuItems.add(item)
                             }
                             adapter.notifyDataSetChanged()

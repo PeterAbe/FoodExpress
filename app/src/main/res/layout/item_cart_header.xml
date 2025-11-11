@@ -1,0 +1,13 @@
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/restaurantHeader"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/restaurant_header_bg"
+    android:padding="12dp"
+    android:textColor="@android:color/black"
+    android:textStyle="bold"
+    android:textSize="16sp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="4dp"
+    android:text="Restaurant Name" />
