@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- TOP TOOLBAR -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/contactToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:title="Contact Us"
+        android:titleTextColor="@android:color/white" />
+
+    <!-- CONTENT -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Call info -->
+            <TextView
+                android:id="@+id/textCallUs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Call us at: 715-545-7154"
+                android:textSize="18sp"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Email info -->
+            <TextView
+                android:id="@+id/textEmailUs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Send us an email at: support@foodexpress.com"
+                android:textSize="18sp"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Section title -->
+            <TextView
+                android:id="@+id/textIssueTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tell us what went wrong"
+                android:textSize="18sp"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Message box -->
+            <EditText
+                android:id="@+id/editIssue"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:gravity="top|start"
+                android:background="@android:drawable/edit_text"
+                android:padding="12dp"
+                android:hint="Describe the problem with your order..."
+                android:inputType="textMultiLine"
+                android:maxLines="5"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Row: voice note + photo + send -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Voice note -->
+                <ImageButton
+                    android:id="@+id/buttonVoiceNote"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_mic"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Record voice note" />
+
+                <!-- Photo / gallery -->
+                <ImageButton
+                    android:id="@+id/buttonAddPhoto"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_photo"
+                    android:background="@android:color/transparent"
+                    android:layout_marginStart="16dp"
+                    android:contentDescription="Add photo" />
+
+                <!-- Spacer -->
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <!-- Send button -->
+                <Button
+                    android:id="@+id/buttonSend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Send" />
+            </LinearLayout>
+
+            <!-- Selected image preview -->
+            <ImageView
+                android:id="@+id/imagePreview"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="16dp"
+                android:scaleType="centerCrop"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
