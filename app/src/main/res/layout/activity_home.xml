@@ -43,15 +43,13 @@
                     android:contentDescription="Profile" />
             </LinearLayout>
 
-            <!-- Deals Banner -->
-            <ImageView
-                android:id="@+id/dealsBanner"
+            <!-- Deals Banner Video -->
+            <VideoView
+                android:id="@+id/dealsVideo"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="200dp"
                 android:layout_marginTop="16dp"
-                android:scaleType="centerCrop"
-                android:contentDescription="Deals banner"
-                android:background="@drawable/rounded_bg" />
+                android:keepScreenOn="true" />
 
             <!-- Featured Restaurants -->
             <TextView

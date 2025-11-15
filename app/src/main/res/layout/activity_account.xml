@@ -1,22 +1,294 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="24dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:text="Logged in as:" />
+    <!-- TOP APP BAR -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/accountToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:title="Account"
+        android:titleTextColor="@android:color/white" />
 
-    <Button
-        android:id="@+id/buttonLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        android:layout_marginTop="24dp" />
+    <!-- CONTENT -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- ROW: Profile Image + Email -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/profileImage"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/profile_image"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/shapes"
+                    android:padding="20dp" />
+
+                <TextView
+                    android:id="@+id/textEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="example@gmail.com"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <!-- Logout Button -->
+            <Button
+                android:id="@+id/buttonLogout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Logout"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center_horizontal" />
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#CCCCCC"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp" />
+
+            <!-- First row: About & Edit -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/buttonAbout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="About"
+                    android:layout_marginEnd="8dp" />
+
+                <Button
+                    android:id="@+id/buttonEditProfile"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Edit"
+                    android:layout_marginStart="8dp" />
+            </LinearLayout>
+
+            <!-- Second row: Orders & Contact Us -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/buttonOrders"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Orders"
+                    android:layout_marginEnd="8dp" />
+
+                <Button
+                    android:id="@+id/buttonContactUs"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Contact Us"
+                    android:layout_marginStart="8dp" />
+            </LinearLayout>
+
+            <!-- ABOUT SECTION (DROPDOWN) -->
+            <LinearLayout
+                android:id="@+id/layoutAbout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_marginTop="16dp"
+                android:background="#F5F5F5"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="FoodExpress is the latest online food ordering platform that connects users with nearby restaurants in a single app.
+
+So far we have:
+• Implemented secure email-based login and account management.
+• Designed a home screen with featured restaurants and promotional banners.
+• Added an Account section with profile controls and support options.
+• Built a Contact Us page that supports text, voice notes and photo attachments for order issues.
+
+The goal of FoodExpress is to make ordering simple, clear and supportive, especially when something goes wrong with an order." />
+            </LinearLayout>
+
+            <!-- EDIT SECTION (DROPDOWN) -->
+            <LinearLayout
+                android:id="@+id/layoutEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_marginTop="16dp"
+                android:background="#F5F5F5"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Edit Profile"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="8dp" />
+
+                <EditText
+                    android:id="@+id/editName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Full Name"
+                    android:layout_marginBottom="8dp" />
+
+                <EditText
+                    android:id="@+id/editEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:layout_marginBottom="8dp" />
+
+                <EditText
+                    android:id="@+id/editPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Phone Number"
+                    android:inputType="phone"
+                    android:layout_marginBottom="12dp" />
+
+                <Button
+                    android:id="@+id/buttonSaveProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Save Changes" />
+            </LinearLayout>
+
+            <!-- ORDERS SECTION (DROPDOWN) -->
+            <LinearLayout
+                android:id="@+id/layoutOrders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_marginTop="16dp"
+                android:background="#F5F5F5"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recent Orders"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="8dp" />
+
+                <!-- Placeholder Order 1 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp"
+                    android:background="#FFFFFF"
+                    android:layout_marginBottom="8dp"
+                    android:elevation="2dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Store: McBurger" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Items: 2x Cheeseburger, 1x Fries" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Paid: $15.99" />
+                </LinearLayout>
+
+                <!-- Placeholder Order 2 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp"
+                    android:background="#FFFFFF"
+                    android:layout_marginBottom="8dp"
+                    android:elevation="2dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Store: Pizza Palace" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Items: Large Pepperoni Pizza" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Paid: $12.50" />
+                </LinearLayout>
+
+                <!-- Placeholder Order 3 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp"
+                    android:background="#FFFFFF"
+                    android:layout_marginBottom="8dp"
+                    android:elevation="2dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Store: Morning Café" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Items: Coffee, Breakfast Sandwich" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Paid: $8.20" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>
+

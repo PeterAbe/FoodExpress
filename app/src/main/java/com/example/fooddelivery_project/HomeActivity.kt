@@ -8,6 +8,10 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.net.Uri
+import android.widget.VideoView
+import android.media.MediaPlayer
+
 
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,13 +20,20 @@ class HomeActivity : AppCompatActivity() {
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         val profileButton = findViewById<ImageButton>(R.id.buttonProfile)
-        val dealsBanner = findViewById<ImageView>(R.id.dealsBanner)
+
         val featuredContainer = findViewById<LinearLayout>(R.id.featuredContainer)
 
-        // --- Deals banner ---
-        Glide.with(this)
-            .load("https://www.doncasterfreepress.co.uk/webimg/b25lY21zOjFmYzUxODIzLWU4MzYtNGY2OS05ZTk5LTE5YmU0ZDA1NjI5ZDphNmMwNjY5Ni02NmM5LTRlZDYtOTZhMy04NzBmODA3OGRmNDM=.jpg?crop=3:2,smart&trim=&width=640&quality=65")
-            .into(dealsBanner)
+        val dealsVideo = findViewById<VideoView>(R.id.dealsVideo)
+
+        val videoPath = "android.resource://" + packageName + "/" + R.raw.restaurant_atmosphere
+        dealsVideo.setVideoURI(Uri.parse(videoPath))
+
+        dealsVideo.setOnPreparedListener { mp ->
+            mp.isLooping = true
+            mp.setVolume(0f, 0f)  // mute optional
+            dealsVideo.start()
+        }
+
 
         // --- Featured restaurants (hardcoded) ---
         val restaurantBanners = listOf(
