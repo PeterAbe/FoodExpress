@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,12 +16,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodDelivery_Project">
 
-        <!-- REMOVE adapters & data classes (not activities) -->
-        <!-- <activity android:name=".Restaurant" android:exported="false" /> -->
-        <!-- <activity android:name=".RestaurantAdapter" android:exported="false" /> -->
-        <!-- <activity android:name=".MenuAdapter" android:exported="false" /> -->
+        <!-- Google Maps API Key -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAn4p7Xw4r4XhdvycDDo_Nvv-sc9deuCDU" />
 
-        <!-- ✅ Keep only actual activity classes -->
+        <!--
+            NOTE:
+            Do NOT register adapters or data classes in the manifest.
+            Only Activities go here.
+        -->
+
+        <!-- Activity declarations -->
         <activity android:name=".AccountActivity" android:exported="false" />
         <activity android:name=".ItemActivity" android:exported="false" />
         <activity android:name=".RestaurantMenuActivity" android:exported="true" />
@@ -28,7 +38,7 @@
         <activity android:name=".HomeActivity" android:exported="false" />
         <activity android:name=".SignupActivity" android:exported="false" />
 
-        <!-- Launcher activity -->
+        <!-- Launcher Activity -->
         <activity
             android:name=".LoginActivity"
             android:exported="true"
