@@ -3,9 +3,7 @@ package com.example.fooddelivery_project
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.location.Location
 import android.os.Bundle
-import androidx.annotation.RequiresPermission
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -15,7 +13,6 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -38,7 +35,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
                 R.id.nav_home -> startActivity(Intent(this, HomeActivity::class.java))
                 R.id.nav_search -> startActivity(Intent(this, MenuActivity::class.java))
                 R.id.nav_cart -> startActivity(Intent(this, CartActivity::class.java))
-                R.id.nav_map -> {} // already here
+                R.id.nav_map -> { /* already here */ }
             }
             true
         }
@@ -51,9 +48,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        enableUserLocation()
 
-        // Example restaurant markers
+        // Add restaurant markers FIRST
         val restaurants = listOf(
             LatLng(43.89865, -78.91307) to "Pizza Pizza",
             LatLng(43.90771, -78.82020) to "Domino's Pizza",
@@ -65,7 +61,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             LatLng(43.91984, -78.85820) to "Popeyes Louisiana Kitchen",
             LatLng(43.89434, -78.86548) to "Tim Hortons",
             LatLng(43.88700, -78.85900) to "Starbucks"
-
         )
 
         for ((location, name) in restaurants) {
@@ -73,12 +68,15 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
                 MarkerOptions()
                     .position(location)
                     .title(name)
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
             )
         }
 
-        // Focus camera on first restaurant
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(restaurants[0].first, 13f))
+        // Move camera to one of the restaurants FIRST
+        val firstRestaurant = restaurants[0].first
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(firstRestaurant, 13f))
+
+        // THEN enable user location (blue dot), but DO NOT move the camera
+        enableUserLocation()
     }
 
     private fun enableUserLocation() {
@@ -88,29 +86,13 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             ) == PackageManager.PERMISSION_GRANTED
         ) {
             mMap.isMyLocationEnabled = true
-            getUserLocation()
+            // No manual camera move here, so restaurants stay in view
         } else {
             ActivityCompat.requestPermissions(
                 this,
                 arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                 1
             )
-        }
-    }
-
-    @RequiresPermission(allOf = [Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION])
-    private fun getUserLocation() {
-        fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
-            if (location != null) {
-                val current = LatLng(location.latitude, location.longitude)
-                mMap.addMarker(
-                    MarkerOptions()
-                        .position(current)
-                        .title("You are here")
-                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
-                )
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(current, 15f))
-            }
         }
     }
 }
