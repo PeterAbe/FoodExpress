@@ -1,36 +1,56 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@android:color/darker_gray"
     android:gravity="center"
+    android:orientation="vertical"
     android:padding="24dp">
+
+
+    <TextView
+        android:id="@+id/loginLogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-40dp"
+        android:layout_marginBottom="100dp"
+        android:background="#6500FF"
+        android:gravity="center"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:text="FoodExpress"
+        android:textColor="@android:color/white"
+        android:textSize="28sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/editTextEmail"
-        android:hint="Email"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="Email" />
 
     <EditText
         android:id="@+id/editTextPassword"
-        android:hint="Password"
-        android:inputType="textPassword"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/buttonLogin"
-        android:text="Login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:background="#6500FF"
+        android:text="Login"
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/textSignupLink"
-        android:text="Don’t have an account? Sign up"
-        android:textColor="@android:color/holo_blue_light"
-        android:layout_marginTop="8dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+
+        android:text="Don’t have an account? Sign up"
+        android:textColor="@android:color/holo_blue_light" />
 
 </LinearLayout>

@@ -41,6 +41,8 @@
         <Button
             android:id="@+id/checkoutButton"
             android:text="Checkout"
+            android:textColor="@android:color/white"
+            android:background="#6500FF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"/>
@@ -52,10 +54,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="?android:attr/windowBackground"
-        app:menu="@menu/bottom_nav_menu"
-        app:labelVisibilityMode="labeled"
-        app:itemIconTint="@color/black"
-        app:itemTextColor="@color/black" />
+        android:background="#6500FF"
+        android:textColor="@android:color/white"
+        app:itemIconTint="@android:color/white"
+        app:itemRippleColor="@android:color/darker_gray"
+        app:itemTextColor="@android:color/darker_gray"
+        app:menu="@menu/bottom_nav_menu" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

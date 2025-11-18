@@ -30,6 +30,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/search_button"
+            android:background="#6500FF"
+            android:textColor="@android:color/white"
             android:layout_gravity="end"
             android:layout_marginTop="8dp" />
 
@@ -57,18 +59,123 @@
                     android:layout_height="80dp"
                     android:gravity="center"
                     android:layout_margin="8dp"
+                    android:textColor="@android:color/white"
                     android:text="@string/burger_label"
-                    android:background="@android:color/darker_gray" />
+                    android:background="#6500FF"/>
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="80dp"
+                    android:gravity="center"
+                    android:layout_margin="8dp"
+                    android:textColor="@android:color/white"
+                    android:text="@string/pizza_label"
+                    android:background="#6500FF"/>
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="80dp"
+                    android:gravity="center"
+                    android:layout_margin="8dp"
+                    android:textColor="@android:color/white"
+                    android:text="Coffee"
+                    android:background="#6500FF"/>
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="80dp"
+                    android:gravity="center"
+                    android:layout_margin="8dp"
+                    android:textColor="@android:color/white"
+                    android:text="Fries"
+                    android:background="#6500FF"/>
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="80dp"
+                    android:gravity="center"
+                    android:layout_margin="8dp"
+                    android:textColor="@android:color/white"
+                    android:text="Asian"
+                    android:background="#6500FF"/>
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="80dp"
+                    android:gravity="center"
+                    android:layout_margin="8dp"
+                    android:textColor="@android:color/white"
+                    android:text="Ice Cream"
+                    android:background="#6500FF"/>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Restuarants Hot Right Now"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:paddingTop="90dp" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:layout_width="120dp"
                     android:layout_height="80dp"
                     android:gravity="center"
                     android:layout_margin="8dp"
-                    android:text="@string/pizza_label"
-                    android:background="@android:color/darker_gray" />
+                    android:textColor="@android:color/white"
+                    android:text="McDonalds"
+                    android:background="#6500FF"/>
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="80dp"
+                    android:gravity="center"
+                    android:layout_margin="8dp"
+                    android:textColor="@android:color/white"
+                    android:text="Osmows"
+                    android:background="#6500FF"/>
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="80dp"
+                    android:gravity="center"
+                    android:layout_margin="8dp"
+                    android:textColor="@android:color/white"
+                    android:text="Wendys"
+                    android:background="#6500FF"/>
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="80dp"
+                    android:gravity="center"
+                    android:layout_margin="8dp"
+                    android:textColor="@android:color/white"
+                    android:text="Tim Hortons"
+                    android:background="#6500FF"/>
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="80dp"
+                    android:gravity="center"
+                    android:layout_margin="8dp"
+                    android:textColor="@android:color/white"
+                    android:text="Subway"
+                    android:background="#6500FF"/>
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="80dp"
+                    android:gravity="center"
+                    android:layout_margin="8dp"
+                    android:textColor="@android:color/white"
+                    android:text="StarBucks"
+                    android:background="#6500FF"/>
+
             </LinearLayout>
         </HorizontalScrollView>
+
+
 
         <!-- RecyclerView for restaurant list -->
         <androidx.recyclerview.widget.RecyclerView
@@ -87,7 +194,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:menu="@menu/bottom_nav_menu"
-        app:labelVisibilityMode="labeled" />
+        android:background="#6500FF"
+        android:textColor="@android:color/white"
+        app:itemIconTint="@android:color/white"
+        app:itemRippleColor="@android:color/darker_gray"
+        app:itemTextColor="@android:color/darker_gray"
+        app:menu="@menu/bottom_nav_menu" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

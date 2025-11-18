@@ -10,6 +10,12 @@ import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.net.Uri
 import android.widget.VideoView
+import android.graphics.Color
+import android.graphics.Typeface
+import android.util.TypedValue
+
+import android.widget.TextView
+
 import android.media.MediaPlayer
 
 
@@ -36,26 +42,59 @@ class HomeActivity : AppCompatActivity() {
 
 
         // --- Featured restaurants (hardcoded) ---
-        val restaurantBanners = listOf(
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiJ5cMOZUqLmUP_xykwtnWmPQFo6-0gYns6A&s",
-            "https://d2w46d36moy248.cloudfront.net/media/dine/Burger_King.jpg",
-            "https://loveincorporated.blob.core.windows.net/contentimages/gallery/a24d9978-8e34-4b04-93d8-24ce20757e69-98167cb1-de61-4169-a9a9-c81cd6d0b219-wendys-breakfast-menu.jpg"
+
+        data class Restaurant(val name: String, val imageUrl: String)
+
+        val restaurants = listOf(
+            Restaurant("McDonald's", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiJ5cMOZUqLmUP_xykwtnWmPQFo6-0gYns6A&s"),
+            Restaurant("Burger King", "https://d2w46d36moy248.cloudfront.net/media/dine/Burger_King.jpg"),
+            Restaurant("Wendy's", "https://loveincorporated.blob.core.windows.net/contentimages/gallery/a24d9978-8e34-4b04-93d8-24ce20757e69-98167cb1-de61-4169-a9a9-c81cd6d0b219-wendys-breakfast-menu.jpg")
         )
 
-        for (url in restaurantBanners) {
-            val imageView = ImageView(this)
-            val params = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                180
-            )
-            params.setMargins(0, 12, 0, 12)
-            imageView.layoutParams = params
-            imageView.scaleType = ImageView.ScaleType.CENTER_CROP
-            imageView.clipToOutline = true
 
-            Glide.with(this).load(url).into(imageView)
-            featuredContainer.addView(imageView)
+        for (restaurant in restaurants) {
+
+            // Parent layout (vertical)
+            val itemLayout = LinearLayout(this).apply {
+                orientation = LinearLayout.VERTICAL
+                layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                ).apply {
+                    setMargins(0, 24, 0, 24)
+                }
+            }
+
+            // ImageView
+            val imageView = ImageView(this).apply {
+                layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    180   // same height you were using
+                )
+                scaleType = ImageView.ScaleType.CENTER_CROP
+                clipToOutline = true
+            }
+
+            // Load image with Glide
+            Glide.with(this).load(restaurant.imageUrl).into(imageView)
+
+            // TextView for restaurant name
+            val nameView = TextView(this).apply {
+                text = restaurant.name
+                textSize = 16f
+                setTypeface(null, Typeface.BOLD)
+                setTextColor(Color.BLACK)
+                setPadding(8, 8, 8, 16)
+            }
+
+            // Add views to parent layout
+            itemLayout.addView(imageView)
+            itemLayout.addView(nameView)
+
+            // Add item to the container in your XML
+            featuredContainer.addView(itemLayout)
         }
+
 
         // --- Bottom navigation ---
         bottomNav.setOnItemSelectedListener { item ->
