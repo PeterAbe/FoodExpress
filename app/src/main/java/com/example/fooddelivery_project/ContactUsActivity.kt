@@ -5,6 +5,8 @@ import android.content.pm.PackageManager
 import android.media.MediaRecorder
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
@@ -12,6 +14,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.FirebaseFirestore
+import java.io.File
 
 class ContactUsActivity : AppCompatActivity() {
 
@@ -20,12 +26,34 @@ class ContactUsActivity : AppCompatActivity() {
     private lateinit var buttonAddPhoto: ImageButton
     private lateinit var buttonSend: Button
     private lateinit var imagePreview: ImageView
+    private lateinit var recordingTimerText: TextView
 
     private var mediaRecorder: MediaRecorder? = null
     private var isRecording = false
+    private var hasRecordedAudio = false
     private lateinit var audioFilePath: String
 
     private var selectedImageUri: Uri? = null
+
+    // Timer fields
+    private val timerHandler = Handler(Looper.getMainLooper())
+    private var recordingStartTime: Long = 0L
+    private var lastRecordingDurationMs: Long = 0L
+
+    private val timerRunnable = object : Runnable {
+        override fun run() {
+            val elapsed = System.currentTimeMillis() - recordingStartTime
+            val seconds = (elapsed / 1000).toInt()
+            val minutes = seconds / 60
+            val remainingSeconds = seconds % 60
+            recordingTimerText.text = String.format("%02d:%02d", minutes, remainingSeconds)
+            timerHandler.postDelayed(this, 1000)
+        }
+    }
+
+    // Firebase (Firestore only, no Storage)
+    private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
 
     companion object {
         private const val RECORD_AUDIO_PERMISSION_CODE = 1001
@@ -57,6 +85,11 @@ class ContactUsActivity : AppCompatActivity() {
         buttonAddPhoto = findViewById(R.id.buttonAddPhoto)
         buttonSend = findViewById(R.id.buttonSend)
         imagePreview = findViewById(R.id.imagePreview)
+        recordingTimerText = findViewById(R.id.textRecordingTimer)
+
+        // Firebase
+        auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
 
         // where the audio will be saved (inside app cache)
         audioFilePath = "${externalCacheDir?.absolutePath}/contact_voice_note.3gp"
@@ -66,7 +99,6 @@ class ContactUsActivity : AppCompatActivity() {
             if (isRecording) {
                 stopRecording()
             } else {
-                // check permission first
                 if (hasRecordAudioPermission()) {
                     startRecording()
                 } else {
@@ -80,25 +112,65 @@ class ContactUsActivity : AppCompatActivity() {
             pickImageLauncher.launch("image/*")
         }
 
-        // Send button: just validate and show confirmation for now
+        // Send button: save metadata + local paths to Firestore
         buttonSend.setOnClickListener {
             val message = editIssue.text.toString().trim()
 
-            if (message.isEmpty() && !isRecording && selectedImageUri == null) {
+            if (message.isEmpty() && !hasRecordedAudio && selectedImageUri == null) {
                 Toast.makeText(
                     this,
                     "Please enter a message, record audio, or attach a photo",
                     Toast.LENGTH_SHORT
                 ).show()
-            } else {
-                // For a school project, it's enough to just confirm
-                Toast.makeText(this, "Your message has been sent. Thank you!", Toast.LENGTH_LONG)
-                    .show()
-                editIssue.text.clear()
-                imagePreview.setImageDrawable(null)
-                imagePreview.visibility = View.GONE
-                selectedImageUri = null
+                return@setOnClickListener
             }
+
+            val userId = auth.currentUser?.uid ?: "anonymous"
+
+            buttonSend.isEnabled = false
+            Toast.makeText(this, "Sending issue...", Toast.LENGTH_SHORT).show()
+
+            val ticket = hashMapOf(
+                "userId" to userId,
+                "issueText" to message,
+                "hasImage" to (selectedImageUri != null),
+                "imageLocalUri" to (selectedImageUri?.toString() ?: ""),
+                "hasAudio" to hasRecordedAudio,
+                "audioLocalPath" to if (hasRecordedAudio) audioFilePath else "",
+                "recordingDurationMs" to lastRecordingDurationMs,
+                "createdAt" to FieldValue.serverTimestamp(),
+                "status" to "open"
+            )
+
+            db.collection("supportTickets")
+                .add(ticket)
+                .addOnSuccessListener {
+                    Toast.makeText(
+                        this,
+                        "Your message has been saved. Thank you!",
+                        Toast.LENGTH_LONG
+                    ).show()
+
+                    // Reset UI
+                    editIssue.text.clear()
+                    imagePreview.setImageDrawable(null)
+                    imagePreview.visibility = View.GONE
+                    selectedImageUri = null
+                    hasRecordedAudio = false
+                    lastRecordingDurationMs = 0L
+                    recordingTimerText.text = ""
+                    recordingTimerText.visibility = View.GONE
+
+                    buttonSend.isEnabled = true
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(
+                        this,
+                        "Failed to save ticket: ${e.message}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    buttonSend.isEnabled = true
+                }
         }
     }
 
@@ -129,6 +201,13 @@ class ContactUsActivity : AppCompatActivity() {
             start()
         }
         isRecording = true
+        hasRecordedAudio = false
+
+        recordingStartTime = System.currentTimeMillis()
+        recordingTimerText.visibility = View.VISIBLE
+        recordingTimerText.text = "00:00"
+        timerHandler.post(timerRunnable)
+
         Toast.makeText(this, "Recording started...", Toast.LENGTH_SHORT).show()
     }
 
@@ -140,6 +219,19 @@ class ContactUsActivity : AppCompatActivity() {
         }
         mediaRecorder = null
         isRecording = false
+        hasRecordedAudio = true
+
+        timerHandler.removeCallbacks(timerRunnable)
+
+        val elapsed = System.currentTimeMillis() - recordingStartTime
+        lastRecordingDurationMs = elapsed
+
+        val seconds = (elapsed / 1000).toInt()
+        val minutes = seconds / 60
+        val remainingSeconds = seconds % 60
+        val finalText = String.format("%02d:%02d", minutes, remainingSeconds)
+        recordingTimerText.text = "Recorded: $finalText"
+
         Toast.makeText(this, "Recording saved", Toast.LENGTH_SHORT).show()
     }
 
@@ -171,5 +263,6 @@ class ContactUsActivity : AppCompatActivity() {
         super.onDestroy()
         mediaRecorder?.release()
         mediaRecorder = null
+        timerHandler.removeCallbacks(timerRunnable)
     }
 }
